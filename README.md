@@ -1,17 +1,17 @@
-# Deploy a website on an Nginx server that runs on the EC2 instance and apply SSL.
+# Host a website on an EC2 instance running an Nginx server and configure SSL
 
 #### Description:
 
-- Create an EC2 server.
-- Install Nginx in it.
-- Create a sample index.html page and deploy it on that Nginx server.
-- Create an elastic IP and attach it to the ec2 instance.
-- Configure domain and apply SSL.
-- Configure automation script for SSL renewal.
-- Host a sample HTML website with multiple pages like about.html, contact.html, etc.
+- Create an EC2 instance.
+- Install Nginx on the instance.
+- Create a sample index.html page and deploy it on the Nginx server.
+- Create an Elastic IP and attach it to the EC2 instance.
+- Configure the domain and apply SSL.
+- Configure an automation script for SSL renewal.
+- Host a sample HTML website with multiple pages.
 - Migrate Freenom DNS to Route53.
 
-#### Step-1: Create an EC2 server
+#### Step-1: Create an EC2 instance.
 
 Firstly, log in to the AWS management console.
 
@@ -55,7 +55,7 @@ Now, take the public IP from the EC2 dashboard and use it to login inside the in
 
 Finally, it will be logged in successfully if everything is configured correctly.
 
-#### Step-2: Install Nginx in EC2 server
+#### Step-2: Install Nginx on the instance.
 
 First, update the list of packages using ```sudo apt update```
 
@@ -69,7 +69,7 @@ To check whether Nginx is successfully installed or not, use ```sudo nginx -v```
 
 ![Img-15](https://user-images.githubusercontent.com/74168188/178556440-a711a7c2-634d-448a-9712-6b3d4bf4697e.png)
 
-#### Step-3: Create a sample index.html page and deploy it on that Nginx server
+#### Step-3: Create a sample index.html page and deploy it on the Nginx server.
 
 For this, navigate to document root, i.e.,/var/www/html, and create an index.html page using vim or nano.
 
@@ -87,7 +87,7 @@ Now, Let's hit the instance public IP from the chrome browser.
 
 As you can see, the content is displayed when the client hits IP.
 
-#### Step-4: Create an elastic IP and attach it to an EC2 instance
+#### Step-4: Create an Elastic IP and attach it to the EC2 instance.
 
 For this, visit the AWS management console, navigate to the search box, type elastic IP, and then click Elastic IPs. It will redirect to a new page. Click on Allocate Elastic IP address to create an elastic IP.
 
@@ -107,7 +107,7 @@ Now, hit the elastic IP to see the sample index.html page.
 
 ![Img-23](https://user-images.githubusercontent.com/74168188/178556932-47dec8e0-5474-4aed-80cc-25454fe112fc.png)
 
-#### Step-5: Configure domain and apply SSL
+#### Step-5: Configure the domain and apply SSL.
 
 Purchase a free domain from freenom.com. For this, search any domain and click select, then checkout and complete the order.
 
@@ -178,13 +178,13 @@ As you see, certificate is saved at /etc/letsencrypt/live/mannan18.ml/fullchain.
 
 Also, Certbot has set up a scheduled task to renew the certificate in the background automatically.
 
-#### Step-6: Configure automation script for SSL renewal
+#### Step-6: Configure an automation script for SSL renewal.
 
 Certbot automatically creates the script to renew the certificate twice a day. This script is located at /etc/cron.d/certbot
 
 ![Img-43](https://user-images.githubusercontent.com/74168188/178673034-451825ba-7238-4266-85da-2ee782a6552c.png)
 
-#### Step-8: Host a sample HTML website that has multiple pages like about.html, contact.html, etc
+#### Step-8: Host a sample HTML website with multiple pages.
 
 For this, I downloaded a sample website from **https://www.free-css.com/free-css-templates/page280/webwing**
 
@@ -200,7 +200,7 @@ Now, let's hit mannan18.ml and see the result.
 
 ![Img-46](https://user-images.githubusercontent.com/74168188/178696406-f57fad48-4532-4ecc-ab4e-29f3b45eb111.png)
 
-#### Step-9: Migrate Freenom DNS to Route53
+#### Step-9: Migrate Freenom DNS to Route53.
 
 Firstly, we must create a hosted zone using the Route53 service of AWS.
 
